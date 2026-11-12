@@ -1,0 +1,17 @@
+{
+  "name": "chromium-blockfile-cache",
+  "version": "0.1.0",
+  "description": "Reads Chromium's blockfile disk cache (index, data_N and f_XXXXXX files) and returns the cached HTTP responses.",
+  "type": "module",
+  "license": "MIT",
+  "exports": "./src/index.mjs",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\""
+  }
+}
