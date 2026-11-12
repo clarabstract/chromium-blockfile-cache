@@ -2,6 +2,23 @@
   "name": "chromium-blockfile-cache",
   "version": "0.1.0",
   "description": "Reads Chromium's blockfile disk cache (index, data_N and f_XXXXXX files) and returns the cached HTTP responses.",
+  "keywords": [
+    "chromium",
+    "chrome",
+    "electron",
+    "disk-cache",
+    "blockfile",
+    "http-cache",
+    "forensics"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clarabstract/chromium-blockfile-cache.git"
+  },
+  "homepage": "https://github.com/clarabstract/chromium-blockfile-cache#readme",
+  "bugs": {
+    "url": "https://github.com/clarabstract/chromium-blockfile-cache/issues"
+  },
   "type": "module",
   "license": "MIT",
   "exports": "./src/index.mjs",
