@@ -1,5 +1,12 @@
 # chromium-blockfile-cache
 
+![AI-DECLARATION: auto](https://img.shields.io/badge/䷼%20AI--DECLARATION-auto-ede9fe?labelColor=ede9fe)
+
+> **Status: vibecoded with very little review.** Written by Claude, an AI
+> coding agent, from a short brief; no human has read the code. It has unit
+> tests and has been checked against real caches, but treat it as unaudited,
+> especially on untrusted input. Details in [AI-DECLARATION.md](AI-DECLARATION.md).
+
 Reads Chromium's **blockfile** disk cache, the format with `index`,
 `data_0`…`data_N` and `f_XXXXXX` files that Chrome and Electron apps use
 on Windows, and returns the cached HTTP responses with their bodies
