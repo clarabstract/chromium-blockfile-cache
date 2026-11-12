@@ -21,8 +21,14 @@ test('lists entries from a real cache with few skips', { skip }, () => {
     Object.keys(stats.skipped).every((reason) => SKIP_REASONS.includes(reason)),
     'every skip has a known reason',
   );
-  const skipped = Object.values(stats.skipped).reduce((sum, count) => sum + count, 0);
-  assert.ok(skipped <= stats.walked * 0.1, `${skipped} of ${stats.walked} entries skipped`);
+  // Evicted and doomed entries stay in their bucket chains until Chromium
+  // cleans them up; a long-running cache can hold thousands. They aren't
+  // damage, so only the other reasons count toward the limit.
+  const damaged = Object.entries(stats.skipped)
+    .filter(([reason]) => reason !== 'inactive-state')
+    .reduce((sum, [, count]) => sum + count, 0);
+  const active = stats.walked - (stats.skipped['inactive-state'] ?? 0);
+  assert.ok(damaged <= active * 0.1, `${damaged} of ${active} active entries skipped as damaged`);
   assert.ok(
     entries.every((entry) => typeof entry.key === 'string' && entry.key.length > 0 && entry.streams.length === 4),
     'every entry has a key and four streams',
